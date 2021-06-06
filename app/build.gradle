@@ -72,4 +72,8 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:24.1.1'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 }

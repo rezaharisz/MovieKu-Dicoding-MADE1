@@ -5,7 +5,7 @@ import com.rezaharis.movieku.core.data.sources.local.entity.TvShowsEntities
 import com.rezaharis.movieku.core.data.sources.local.room.MovieKuFavoritesDao
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSources private constructor(private val movieKuFavoritesDao: MovieKuFavoritesDao){
+class LocalDataSources(private val movieKuFavoritesDao: MovieKuFavoritesDao){
     companion object{
         private var INSTANCE: LocalDataSources? = null
 
