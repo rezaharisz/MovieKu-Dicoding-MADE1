@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MovieKu</string>
+    <string name="movie_name">Load …</string>
+    <string name="tv_des">Load Synopsis …</string>
+    <string name="poster">poster</string>
+    <string name="overview">Synopsis</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="button_back">Button Back</string>
+    <string name="splash_image">Splash Image</string>
+    <string name="detail_tv_show">Detail Tv Show</string>
+    <string name="tv_rate">Load …</string>
+    <string name="tv_popularity">Load …</string>
+    <string name="star_rate">Star Rate</string>
+    <string name="tv_release">Load Release Date …</string>
+    <string name="welcome_msg">Hi, Reza Haris Alfikri!</string>
+    <string name="favorite">Favorites</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

@@ -1,0 +1,62 @@
+#Set Up Activity
+1. Set up  Activity Scenario adalah MainActivity
+2. Register IdlingResource
+
+#Set Up After Testing
+1. Unregister IdlingResource
+
+# Test Movies
+1. Melakukan click pada navigation_movies
+2. Memastikan cr_rview dalam keadaan tampil
+3. Gulir cr_rview ke posisi data terakhir
+
+# Test Detail Movies
+1. Melakukan click pada navigation_movies
+1. Melakukan click cr_rview pada data ke 0
+3. Memastikan tv_movie telah ditampilkan dengan benar
+4. Memastikan movie_release telah ditampilkan dengan benar
+5. Memastikan movie_rate telah ditampilkan dengan benar
+6. Memastikan movie_votecount telah ditampilkan dengan benar
+7. Memastikan tv_des telah ditampilkan dengan benar
+
+# Test Menambahkan Favorite Movies
+1. Melakukan click pada navigation_movies
+2. Melakukan click cr_rview pada data ke 0
+3. Melakukan click pada set_favorite
+
+# Test Tv Shows
+1. Melakukan click pada navigation_tvshows
+2. Memastikan cr_tvshows dalam keadaan tampil
+3. Gulir cr_tvshows ke posisi data terakhir
+
+# Test Detail Tv Shows
+1. Melakukan click pada navigation_tvshows
+1. Melakukan click cr_tvshows pada data ke 0
+3. Memastikan tv_tvshows telah ditampilkan dengan benar
+4. Memastikan tvshows_release telah ditampilkan dengan benar
+5. Memastikan tvshows_rate telah ditampilkan dengan benar
+6. Memastikan tvshows_votecount telah ditampilkan dengan benar
+7. Memastikan tv_des_tvshows telah ditampilkan dengan benar
+
+# Test Menambahkan Favorite Tv Shows
+1. Melakukan click pada navigation_tvshows
+2. Melakukan click cr_tvshows pada data ke 0
+3. Melakukan click pada set_favorite
+
+# Test Favorite Movies
+1. Melakukan click pada navigation_favorite
+2. Gulir rv_favorites_movies ke posisi data terakhir
+
+# Test Detail Favorite Movies
+1. Melakukan click pada navigation_favorite
+2. Melakukan click rv_favorites_movies pada data ke 0
+
+# Test Favorite Tv Shows
+1. Melakukan click pada navigation_favorite
+2. Melakukan swipeLeft pada view_pager
+3. Gulir rv_favorites_tvshows ke posisi data terakhir
+
+# Test Detail Favorite Tv Shows
+1. Melakukan click pada navigation_favorite
+2. Melakukan swipeLeft pada view_pager
+3. Melakukan click rv_favorites_tvshows pada data ke 0

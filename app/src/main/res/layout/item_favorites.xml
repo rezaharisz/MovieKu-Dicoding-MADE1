@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_marginStart="@dimen/sixteen_dp"
+    android:layout_marginEnd="@dimen/sixteen_dp"
+    android:layout_marginBottom="@dimen/sixteen_dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/loadimg"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/poster" />
+
+        <TextView
+            android:id="@+id/tv_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="@string/movie_name"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="@dimen/sixteen_dp"
+            android:layout_toEndOf="@+id/iv_poster"/>
+
+        <ImageView
+            android:id="@+id/ic_star"
+            android:layout_width="@dimen/sixteen_dp"
+            android:layout_height="@dimen/sixteen_dp"
+            android:layout_above="@+id/tv_releasedate"
+            android:layout_marginTop="4dp"
+            android:layout_below="@+id/tv_favorites"
+            android:layout_marginStart="@dimen/sixteen_dp"
+            android:layout_toEndOf="@+id/iv_poster"
+            android:src="@drawable/star_rate"
+            android:contentDescription="@string/favorite" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_favorites"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/ic_star"
+            android:text="@string/movie_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sixteen_sp" />
+
+        <TextView
+            android:id="@+id/tv_releasedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rate"
+            android:layout_marginStart="@dimen/sixteen_dp"
+            android:layout_toEndOf="@+id/iv_poster"
+            android:text="@string/movie_name"
+            android:textStyle="italic"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sixteen_sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
