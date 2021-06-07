@@ -2,8 +2,11 @@ package com.rezaharis.movieku.favorites.tvshow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.rezaharis.movieku.core.domain.usecase.MovieKuUseCase
+import com.rezaharisz.core.domain.usecase.MovieKuUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoritesTvShowsViewModel(movieKuUseCase: MovieKuUseCase): ViewModel() {
+@HiltViewModel
+class FavoritesTvShowsViewModel @Inject constructor(movieKuUseCase: MovieKuUseCase): ViewModel() {
     val favoriteTvShows = movieKuUseCase.getFavoriteTvShows().asLiveData()
 }

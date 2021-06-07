@@ -2,8 +2,11 @@ package com.rezaharis.movieku.tvshow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.rezaharis.movieku.core.domain.usecase.MovieKuUseCase
+import com.rezaharisz.core.domain.usecase.MovieKuUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TvShowsViewModel(movieKuUseCase: MovieKuUseCase): ViewModel() {
+@HiltViewModel
+class TvShowsViewModel @Inject constructor(movieKuUseCase: MovieKuUseCase): ViewModel() {
     val tvShows = movieKuUseCase.getTvShows().asLiveData()
 }

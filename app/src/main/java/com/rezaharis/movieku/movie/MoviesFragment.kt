@@ -7,19 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rezaharis.movieku.core.ui.adapter.MovieAdapter
-import com.rezaharis.movieku.core.data.Resource
-import com.rezaharis.movieku.core.ui.ViewModelFactory
 import com.rezaharis.movieku.movie.detail.DetailMovieActivity.Companion.MOVIE
 import com.rezaharis.movieku.databinding.FragmentMoviesBinding
 import com.rezaharis.movieku.movie.detail.DetailMovieActivity
+import com.rezaharisz.core.data.Resource
+import com.rezaharisz.core.ui.adapter.MovieAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var movieViewModel: MovieViewModel
+
+    private val movieViewModel: MovieViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMoviesBinding.inflate(inflater, container, false)
@@ -38,12 +40,9 @@ class MoviesFragment : Fragment() {
                 startActivity(intent)
             }
 
-            val factory = context?.let { ViewModelFactory.getInstance(it) }
-            movieViewModel = factory?.let { ViewModelProvider(this, it) }!![MovieViewModel::class.java]
-
-            movieViewModel.movies.observe(viewLifecycleOwner, { listMovies ->
-                if (listMovies != null){
-                    when(listMovies){
+            movieViewModel.movies.observe(viewLifecycleOwner) { listMovies ->
+                if (listMovies != null) {
+                    when (listMovies) {
                         is Resource.Loading -> showLoading(true)
                         is Resource.Success -> {
                             showLoading(false)
@@ -51,11 +50,15 @@ class MoviesFragment : Fragment() {
                         }
                         is Resource.Error -> {
                             showLoading(false)
-                            Toast.makeText(context, "Kesalahan Ketika Memuat Data", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "Kesalahan Ketika Memuat Data",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
-            })
+            }
 
             with(binding.crRview){
                 layoutManager = LinearLayoutManager(context)

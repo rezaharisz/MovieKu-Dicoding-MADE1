@@ -16,5 +16,5 @@
     <string name="tv_release">Load Release Date …</string>
     <string name="welcome_msg">Hi, Reza Haris Alfikri!</string>
     <string name="favorite">Favorites</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_favorites">Module Title</string>
 </resources>

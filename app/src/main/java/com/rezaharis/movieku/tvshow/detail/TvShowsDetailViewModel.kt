@@ -1,10 +1,13 @@
 package com.rezaharis.movieku.tvshow.detail
 
 import androidx.lifecycle.ViewModel
-import com.rezaharis.movieku.core.domain.model.TvShows
-import com.rezaharis.movieku.core.domain.usecase.MovieKuUseCase
+import com.rezaharisz.core.domain.model.TvShows
+import com.rezaharisz.core.domain.usecase.MovieKuUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TvShowsDetailViewModel(private val movieKuUseCase: MovieKuUseCase): ViewModel() {
+@HiltViewModel
+class TvShowsDetailViewModel @Inject constructor(private val movieKuUseCase: MovieKuUseCase): ViewModel() {
 
     fun setFavoriteTvShows(tvShows: TvShows, state: Boolean) = movieKuUseCase.setFavoriteTvShows(tvShows, state)
 }

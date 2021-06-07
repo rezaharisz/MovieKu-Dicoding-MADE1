@@ -1,0 +1,50 @@
+android {
+    defaultConfig {
+        buildConfigField("String", "BASE_IMAGE", '"https://image.tmdb.org/t/p/w500/"')
+        buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+        buildConfigField("String", "API_KEY", '"71cef1dd5d894960850ec5f3e5706450"')
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support"
+
+    //CARDVIEW
+    implementation "androidx.cardview:cardview:$cardview_version"
+
+    //RECYCLERVIEW
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //NAVIGATION
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_fragment_ktx_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_ui_ktx"
+
+    //LIFECYCLE
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx"
+
+    //GLIDE
+    implementation "com.github.bumptech.glide:glide:$bumptecth_glide"
+
+    //VIEW PAGER
+    implementation "androidx.viewpager2:viewpager2:$view_pager"
+
+    //noinspection GradleCompatible
+    implementation "com.android.support:appcompat-v7:$appcompat_v7"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_version"
+
+    //DAGGER HILT
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.activity:activity-ktx:$activity_ktx_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+}

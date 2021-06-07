@@ -3,18 +3,20 @@ package com.rezaharis.movieku.tvshow.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.rezaharis.movieku.BuildConfig
 import com.rezaharis.movieku.R
-import com.rezaharis.movieku.core.domain.model.TvShows
-import com.rezaharis.movieku.core.ui.ViewModelFactory
 import com.rezaharis.movieku.databinding.ActivityDetailTvShowBinding
+import com.rezaharisz.core.BuildConfig.BASE_IMAGE
+import com.rezaharisz.core.domain.model.TvShows
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailTvShowActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailTvShowBinding
-    private lateinit var tvShowsDetailViewModel: TvShowsDetailViewModel
+
+    private val tvShowsDetailViewModel: TvShowsDetailViewModel by viewModels()
 
     companion object{
         const val TV_SH0WS = "tv_shows"
@@ -28,9 +30,6 @@ class DetailTvShowActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             super.onBackPressed()
         }
-
-        val factory = ViewModelFactory.getInstance(this)
-        tvShowsDetailViewModel = ViewModelProvider(this, factory)[TvShowsDetailViewModel::class.java]
 
         val detailTvShows = intent.getParcelableExtra<TvShows>(TV_SH0WS)
 
@@ -50,7 +49,7 @@ class DetailTvShowActivity : AppCompatActivity() {
 
     private fun getTvShows(tvShows: TvShows){
         Glide.with(this)
-                .load(BuildConfig.BASE_IMAGE + tvShows.poster)
+                .load(BASE_IMAGE + tvShows.poster)
                 .override(250, 320)
                 .into(binding.ivPosterTvshows)
         binding.tvshowsRelease.text = tvShows.releasedate

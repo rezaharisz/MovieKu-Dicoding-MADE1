@@ -8,9 +8,10 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rezaharis.movieku.R
-import com.rezaharis.movieku.core.ui.adapter.SectionPagerAdapter
 import com.rezaharis.movieku.databinding.FragmentFavoritesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoritesBinding

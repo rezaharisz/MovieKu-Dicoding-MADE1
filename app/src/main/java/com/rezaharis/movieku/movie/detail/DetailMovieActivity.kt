@@ -3,18 +3,21 @@ package com.rezaharis.movieku.movie.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.rezaharis.movieku.BuildConfig
+import com.rezaharis.movieku.MyApplication
 import com.rezaharis.movieku.R
-import com.rezaharis.movieku.core.domain.model.Movies
-import com.rezaharis.movieku.core.ui.ViewModelFactory
 import com.rezaharis.movieku.databinding.ActivityDetailMovieBinding
+import com.rezaharisz.core.BuildConfig.BASE_IMAGE
+import com.rezaharisz.core.domain.model.Movies
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
-    private lateinit var movieDetailViewModel: MovieDetailViewModel
+
+    private val movieDetailViewModel: MovieDetailViewModel by viewModels()
 
     companion object{
         const val MOVIE = "movie"
@@ -28,9 +31,6 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             super.onBackPressed()
         }
-
-        val factory = ViewModelFactory.getInstance(this)
-        movieDetailViewModel = ViewModelProvider(this, factory)[MovieDetailViewModel::class.java]
 
         val detailMovies = intent.getParcelableExtra<Movies>(MOVIE)
         if (detailMovies != null){
@@ -49,7 +49,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private fun getMovies(movies: Movies){
         Glide.with(this)
-            .load(BuildConfig.BASE_IMAGE + movies.poster)
+            .load(BASE_IMAGE + movies.poster)
             .override(250, 320)
             .into(binding.ivPoster)
         binding.tvMovie.text = movies.movieName
