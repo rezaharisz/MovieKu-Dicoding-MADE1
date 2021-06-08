@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.rezaharisz.core.ui.adapter
 
 import android.view.LayoutInflater
@@ -33,7 +35,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
                     .into(ivPoster)
                 tvFavorites.text = movies.movieName
                 tvRate.text = movies.rate.toString()
-                tvReleasedate.text = movies.releasedate
+                tvDes.text = movies.description
             }
         }
 

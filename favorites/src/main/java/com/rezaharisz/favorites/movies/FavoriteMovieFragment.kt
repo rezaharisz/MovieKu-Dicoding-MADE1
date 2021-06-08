@@ -1,6 +1,5 @@
-package com.rezaharis.movieku.favorites.movie
+package com.rezaharisz.favorites.movies
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,35 +9,40 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rezaharis.movieku.MyApplication
-import com.rezaharis.movieku.movie.detail.DetailMovieActivity.Companion.MOVIE
-import com.rezaharis.movieku.databinding.FragmentFavoriteMoviesBinding
+import com.rezaharis.movieku.di.FavoritesDependencies
 import com.rezaharis.movieku.movie.detail.DetailMovieActivity
 import com.rezaharisz.core.ui.adapter.MovieAdapter
-import dagger.hilt.android.AndroidEntryPoint
+import com.rezaharisz.favorites.databinding.FragmentFavoriteMovieBinding
+import com.rezaharisz.favorites.di.DaggerFavoritesComponent
+import com.rezaharisz.favorites.util.ViewModelFactory
+import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
-@AndroidEntryPoint
-class FavoriteMoviesFragment : Fragment() {
+class FavoriteMovieFragment : Fragment() {
 
-    private lateinit var binding: FragmentFavoriteMoviesBinding
+    private lateinit var binding: FragmentFavoriteMovieBinding
 
-//    @Inject
-//    lateinit var factory: ViewModelFactory
-
-    private val favoritesMovieViewModel: FavoritesMovieViewModel by viewModels()
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        (requireActivity().application as MyApplication).appComponent.inject(this)
-//    }
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val favoritesMovieViewModel: FavoritesMovieViewModel by viewModels {factory}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentFavoriteMoviesBinding.inflate(inflater, container, false)
+        binding = FragmentFavoriteMovieBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        DaggerFavoritesComponent.builder()
+            .context(requireContext())
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    requireContext(),
+                    FavoritesDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
+
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null){
@@ -46,7 +50,7 @@ class FavoriteMoviesFragment : Fragment() {
             val favoriteMovieAdapter = MovieAdapter()
             favoriteMovieAdapter.onItemClick = {
                 val intent = Intent(activity, DetailMovieActivity::class.java)
-                intent.putExtra(MOVIE, it)
+                intent.putExtra(DetailMovieActivity.MOVIE, it)
                 startActivity(intent)
             }
 
@@ -64,4 +68,5 @@ class FavoriteMoviesFragment : Fragment() {
             }
         }
     }
+
 }

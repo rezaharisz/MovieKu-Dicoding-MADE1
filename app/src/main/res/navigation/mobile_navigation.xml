@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/navigation_movies">
-
+    
     <fragment
         android:id="@+id/navigation_movies"
         android:name="com.rezaharis.movieku.movie.MoviesFragment"
@@ -17,9 +17,4 @@
         android:label="fragment_info"
         tools:layout="@layout/fragment_tvshows" />
 
-    <fragment
-        android:id="@+id/navigation_favorite"
-        android:name="com.rezaharis.movieku.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
 </navigation>

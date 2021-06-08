@@ -1,6 +1,5 @@
-package com.rezaharis.movieku.favorites.tvshow
+package com.rezaharisz.favorites.tvshows
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,28 +9,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rezaharis.movieku.MyApplication
-import com.rezaharis.movieku.tvshow.detail.DetailTvShowActivity.Companion.TV_SH0WS
-import com.rezaharis.movieku.databinding.FragmentFavoriteTvShowsBinding
+import com.rezaharis.movieku.di.FavoritesDependencies
 import com.rezaharis.movieku.tvshow.detail.DetailTvShowActivity
 import com.rezaharisz.core.ui.adapter.TvShowsAdapter
-import dagger.hilt.android.AndroidEntryPoint
+import com.rezaharisz.favorites.databinding.FragmentFavoriteTvShowsBinding
+import com.rezaharisz.favorites.di.DaggerFavoritesComponent
+import com.rezaharisz.favorites.util.ViewModelFactory
+import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteTvShowsFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteTvShowsBinding
 
-//    @Inject
-//    lateinit var factory: ViewModelFactory
-
-    private val favoritesTvShowsViewModel: FavoritesTvShowsViewModel by viewModels()
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        (requireActivity().application as MyApplication).appComponent.inject(this)
-//    }
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val favoritesTvShowsViewModel: FavoritesTvShowsViewModel by viewModels {factory}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFavoriteTvShowsBinding.inflate(inflater, container, false)
@@ -39,13 +32,24 @@ class FavoriteTvShowsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        DaggerFavoritesComponent.builder()
+            .context(requireContext())
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    requireContext(),
+                    FavoritesDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
+
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null){
             val favoriteTvShowsAdapter = TvShowsAdapter()
             favoriteTvShowsAdapter.onItemClick = {
                 val intent = Intent(activity, DetailTvShowActivity::class.java)
-                intent.putExtra(TV_SH0WS, it)
+                intent.putExtra(DetailTvShowActivity.TV_SH0WS, it)
                 startActivity(intent)
             }
 

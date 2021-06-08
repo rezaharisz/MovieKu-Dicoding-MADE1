@@ -3,9 +3,9 @@ package com.rezaharis.movieku.movie.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.rezaharis.movieku.MyApplication
 import com.rezaharis.movieku.R
 import com.rezaharis.movieku.databinding.ActivityDetailMovieBinding
 import com.rezaharisz.core.BuildConfig.BASE_IMAGE
@@ -64,6 +64,12 @@ class DetailMovieActivity : AppCompatActivity() {
             isFavorite = !isFavorite
             movieDetailViewModel.setFavoriteMovies(movies, isFavorite)
             setFavorite(isFavorite)
+
+            if (isFavorite){
+                Toast.makeText(this, "Added to Favorite Movies", Toast.LENGTH_SHORT).show()
+            } else{
+                Toast.makeText(this, "Removed from Favorite Movies", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

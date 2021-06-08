@@ -1,11 +1,12 @@
-package com.rezaharis.movieku.favorites
+package com.rezaharisz.favorites
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.rezaharis.movieku.favorites.movie.FavoriteMoviesFragment
-import com.rezaharis.movieku.favorites.tvshow.FavoriteTvShowsFragment
+import com.rezaharisz.favorites.movies.FavoriteMovieFragment
+import com.rezaharisz.favorites.tvshows.FavoriteTvShowsFragment
 
-class SectionPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+class SectionPagerAdapter(activity: AppCompatActivity): FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
         return 2
     }
@@ -14,11 +15,10 @@ class SectionPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
         var fragment: Fragment? = null
 
         when(position){
-            0 -> fragment = FavoriteMoviesFragment()
+            0 -> fragment = FavoriteMovieFragment()
             1 -> fragment = FavoriteTvShowsFragment()
         }
 
         return fragment as Fragment
     }
-
 }

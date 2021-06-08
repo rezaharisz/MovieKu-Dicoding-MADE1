@@ -1,4 +1,4 @@
-package com.rezaharis.movieku.favorites.tvshow
+package com.rezaharisz.favorites.tvshows
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

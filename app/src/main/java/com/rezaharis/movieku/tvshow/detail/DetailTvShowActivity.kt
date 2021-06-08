@@ -3,6 +3,7 @@ package com.rezaharis.movieku.tvshow.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.rezaharis.movieku.R
@@ -65,6 +66,12 @@ class DetailTvShowActivity : AppCompatActivity() {
             isFavorite = !isFavorite
             tvShowsDetailViewModel.setFavoriteTvShows(tvShows, isFavorite)
             setFavorite(isFavorite)
+
+            if (isFavorite){
+                Toast.makeText(this, "Added to Favorite Tv Shows", Toast.LENGTH_SHORT).show()
+            } else{
+                Toast.makeText(this, "Removed from Favorite Tv Shows", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

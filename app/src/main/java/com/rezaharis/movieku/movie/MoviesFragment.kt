@@ -1,6 +1,7 @@
 package com.rezaharis.movieku.movie
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -64,6 +65,11 @@ class MoviesFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 adapter = movieAdapter
+            }
+
+            binding.favBtn.setOnClickListener {
+                val uri = Uri.parse("movieku://favorites")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
         }
     }

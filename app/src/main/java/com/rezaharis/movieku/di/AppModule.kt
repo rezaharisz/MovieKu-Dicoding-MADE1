@@ -1,19 +1,21 @@
 package com.rezaharis.movieku.di
 
+import com.rezaharisz.core.data.MovieKuRepository
 import com.rezaharisz.core.domain.usecase.MovieKuInteractor
 import com.rezaharisz.core.domain.usecase.MovieKuUseCase
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
-@InstallIn(ViewModelComponent::class)
-abstract class AppModule {
+@InstallIn(SingletonComponent::class)
+object AppModule {
 
-    @Binds
-    @ViewModelScoped
-    abstract fun provideMovieKuUseCase(movieKuInteractor: MovieKuInteractor): MovieKuUseCase
+    @Provides
+    @Singleton
+    fun provideMovieKuUseCase(movieKuRepository: MovieKuRepository): MovieKuUseCase =
+        MovieKuInteractor(movieKuRepository)
 
 }
